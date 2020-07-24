@@ -8,6 +8,7 @@
 
 #include <Modules/ModuleManager.h>
 
+class UWidgetComponent;
 
 class FImGuiModule : public IModuleInterface
 {
@@ -109,6 +110,11 @@ public:
 	virtual void ReleaseTexture(const FImGuiTextureHandle& Handle);
 
 	/**
+	* Register UWidgetComponent for rendering to world space WidgetComponent
+	*/
+	virtual void RegisterWidgetComponent(UWidgetComponent* Widget);
+
+	/**
 	 * Get ImGui module properties.
 	 *
 	 * @returns Reference to an instance of ImGui module properties that allows to read and/or modify module state.
@@ -163,6 +169,7 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
 
 	private:
 

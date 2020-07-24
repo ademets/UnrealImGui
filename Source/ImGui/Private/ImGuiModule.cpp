@@ -8,6 +8,8 @@
 #include "Utilities/WorldContext.h"
 #include "Utilities/WorldContextIndex.h"
 
+#include "Components/WidgetComponent.h"
+
 #if WITH_EDITOR
 #include "ImGuiImplementation.h"
 #include "Editor/ImGuiEditor.h"
@@ -96,6 +98,12 @@ void FImGuiModule::ReleaseTexture(const FImGuiTextureHandle& Handle)
 	{
 		ImGuiModuleManager->GetTextureManager().ReleaseTextureResources(ImGuiInterops::ToTextureIndex(Handle.GetTextureId()));
 	}
+}
+
+void FImGuiModule::RegisterWidgetComponent(UWidgetComponent* Widget)
+{	
+	//ImGuiModuleManager->RegisterWidget(Widget);
+	Widget->SetSlateWidget(ImGuiModuleManager->Widgets[0].Pin());
 }
 
 void FImGuiModule::StartupModule()
