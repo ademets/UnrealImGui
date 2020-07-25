@@ -103,7 +103,12 @@ void FImGuiModule::ReleaseTexture(const FImGuiTextureHandle& Handle)
 void FImGuiModule::RegisterWidgetComponent(UWidgetComponent* Widget)
 {	
 	//ImGuiModuleManager->RegisterWidget(Widget);
-	Widget->SetSlateWidget(ImGuiModuleManager->Widgets[0].Pin());
+	//Widget->SetSlateWidget(ImGuiModuleManager->Widgets[0].Pin());
+	Widget->SetSlateWidget(ImGuiModuleManager->WidgetsShared[0].ToSharedRef());
+}
+
+void FImGuiModule::ReleaseWidgetComponent(UWidgetComponent* Widget)
+{
 }
 
 void FImGuiModule::StartupModule()
