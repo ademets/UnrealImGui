@@ -10,6 +10,7 @@
 #include "TextureManager.h"
 #include "Widgets/SImGuiLayout.h"
 
+class UWidgetComponent;
 
 // Central manager that implements module logic. It initializes and controls remaining module components.
 class FImGuiModuleManager
@@ -62,6 +63,9 @@ private:
 	void AddWidgetToViewport(UGameViewportClient* GameViewport);
 	void AddWidgetsToActiveViewports();
 
+	void AddWidgetToWidgetComponent(UWidgetComponent* WidgetComponent);
+
+
 	void OnContextProxyCreated(int32 ContextIndex, FImGuiContextProxy& ContextProxy);
 
 	// Event that we call after ImGui is updated.
@@ -87,6 +91,8 @@ private:
 
 	// Slate widgets that we created.
 	TArray<TWeakPtr<SImGuiLayout>> Widgets;
+	TArray<TSharedPtr<SImGuiLayout>> WidgetsShared;
+	TArray<TWeakPtr<UWidgetComponent>> WidgetComponents;
 
 	FDelegateHandle TickInitializerHandle;
 	FDelegateHandle TickDelegateHandle;

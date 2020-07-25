@@ -71,6 +71,9 @@ public:
 	/** Toggle ImGui demo. */
 	void ToggleDemo() { SetShowDemo(!ShowDemo()); }
 
+	void SetViewportless(bool bUseViewportRendering) { bViewportless = bUseViewportRendering; }
+	bool IsViewportless() {return bViewportless; }
+
 private:
 
 	bool bInputEnabled = false;
@@ -83,4 +86,6 @@ private:
 	bool bMouseInputShared = false;
 
 	bool bShowDemo = false;
+
+	bool bViewportless = true;
 };

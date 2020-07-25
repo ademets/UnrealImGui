@@ -112,7 +112,8 @@ public:
 	/**
 	* Register UWidgetComponent for rendering to world space WidgetComponent
 	*/
-	virtual void RegisterWidgetComponent(UWidgetComponent* Widget);
+	virtual void RegisterWidgetComponent(/*const FName& Name,*/ UWidgetComponent* Widget);
+	virtual void ReleaseWidgetComponent(UWidgetComponent* Widget);
 
 	/**
 	 * Get ImGui module properties.
