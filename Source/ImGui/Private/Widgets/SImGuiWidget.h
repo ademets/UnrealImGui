@@ -20,6 +20,9 @@ class UImGuiInputHandler;
 
 class UGameViewportClient;
 class ULocalPlayer;
+// if class==UWidgetComponent, then use it as Panel, otherwise intanciate new UWidgetComponent using windowname
+// if true, and Parent!=null, then SpawnPosition is relativ
+// if true, disable all Viewport based code, and use WidgetComponent stuff instead
 
 // Slate widget for rendering ImGui output and storing Slate inputs.
 class SImGuiWidget : public SCompoundWidget
@@ -33,6 +36,11 @@ public:
 	SLATE_ARGUMENT(FImGuiModuleManager*, ModuleManager)
 	SLATE_ARGUMENT(UGameViewportClient*, GameViewport)
 	SLATE_ARGUMENT(int32, ContextIndex)
+	SLATE_ARGUMENT(FVector, SpawnPosition)
+	SLATE_ARGUMENT(USceneComponent*, Parent)
+	SLATE_ARGUMENT(bool, IsSpawnPositionRelative)
+	SLATE_ARGUMENT(bool, SpawnAsWidgetComponent)
+	SLATE_ARGUMENT(UWidgetComponent*, WidgetComponent)
 	SLATE_END_ARGS()
 
 	void Construct(const FArguments& InArgs);
