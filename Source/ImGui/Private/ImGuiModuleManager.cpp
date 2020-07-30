@@ -195,9 +195,13 @@ void FImGuiModuleManager::AddWidgetToViewport(UGameViewportClient* GameViewport)
 
 	// Create and initialize the widget.
 	TSharedPtr<SImGuiLayout> SharedWidget;
-	SAssignNew(SharedWidget, SImGuiLayout).ModuleManager(this).GameViewport(GameViewport).ContextIndex(ContextIndex);
+	bool useWidgets = true;
+	if (!useWidgets)
+		SAssignNew(SharedWidget, SImGuiLayout).ModuleManager(this).GameViewport(GameViewport).ContextIndex(ContextIndex);
+	else
+		SAssignNew(SharedWidget, SImGuiLayout).ModuleManager(this).GameViewport(GameViewport).ContextIndex(ContextIndex).SpawnAsWidgetComponent(true);
 	
-	GameViewport->AddViewportWidgetContent(SharedWidget.ToSharedRef(), IMGUI_WIDGET_Z_ORDER);
+	//GameViewport->AddViewportWidgetContent(SharedWidget.ToSharedRef(), IMGUI_WIDGET_Z_ORDER);
 
 	// We transfer widget ownerships to viewports but we keep weak references in case we need to manually detach active
 	// widgets during module shutdown (important during hot-reloading).

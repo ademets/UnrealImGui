@@ -141,13 +141,13 @@ SImGuiWidget::~SImGuiWidget()
 	// Unregister from post-update notifications.
 	ModuleManager->OnPostImGuiUpdate().RemoveAll(this);
 }
-
+//[todo] change code here to handle widgetinteractor (UpdateInputState)
 void SImGuiWidget::Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime)
 {
 	Super::Tick(AllottedGeometry, InCurrentTime, InDeltaTime);
 
-	UpdateInputState();
-	UpdateTransparentMouseInput(AllottedGeometry);
+	UpdateInputState(); //[todo] change code here to handle widgetinteractor (UpdateInputState)
+	UpdateTransparentMouseInput(AllottedGeometry); //[todo] change code here to handle widgetinteractor (UpdateInputState)
 	HandleWindowFocusLost();
 	UpdateCanvasSize();
 }
@@ -421,7 +421,7 @@ void SImGuiWidget::ReturnFocus()
 
 	PreviousUserFocusedWidget.Reset();
 }
-
+//[todo] remove viewport references
 void SImGuiWidget::UpdateInputState()
 {
 	auto& Properties = ModuleManager->GetProperties();
@@ -455,7 +455,7 @@ void SImGuiWidget::UpdateInputState()
 		if (bInputEnabled)
 		{
 			// We won't get mouse enter, if viewport is already hovered.
-			if (GameViewport->GetGameViewportWidget()->IsHovered())
+			if (GameViewport->GetGameViewportWidget() && GameViewport->GetGameViewportWidget()->IsHovered())
 			{
 				InputHandler->OnMouseInputEnabled();
 			}
