@@ -171,12 +171,8 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-<<<<<<< HEAD
 private:
-=======
 
-	private:
->>>>>>> edca8e5... add support for UWidgetComponent rendering
 
 #if WITH_EDITOR
 	friend struct FImGuiContextHandle;
