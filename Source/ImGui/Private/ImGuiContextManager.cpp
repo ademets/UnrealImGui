@@ -254,6 +254,8 @@ void FImGuiContextManager::SetDPIScale(const FImGuiDPIScaleInfo& ScaleInfo)
 	}
 }
 
+#include "Fonts/Roboto_Medium.cpp"
+
 void FImGuiContextManager::BuildFontAtlas()
 {
 	if (!FontAtlas.IsBuilt())
@@ -261,6 +263,9 @@ void FImGuiContextManager::BuildFontAtlas()
 		ImFontConfig FontConfig = {};
 		FontConfig.SizePixels = FMath::RoundFromZero(13.f * DPIScale);
 		FontAtlas.AddFontDefault(&FontConfig);
+
+		FPlatformString::Strcpy(FontConfig.Name, sizeof(FontConfig.Name), "Roboto Medium 24px");
+		FontAtlas.AddFontFromMemoryCompressedTTF(Roboto_Medium_compressed_data, Roboto_Medium_compressed_size, 24.0f * DPIScale, &FontConfig);
 
 		unsigned char* Pixels;
 		int Width, Height, Bpp;

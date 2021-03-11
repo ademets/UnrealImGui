@@ -57,6 +57,14 @@ class UImGUIBPLibrary : public UBlueprintFunctionLibrary
     static FString GetVersion();
 
 	// Styles
+	UFUNCTION(BlueprintCallable, Category = "ImGUI|Styles")
+	static void SetFont(FString Path, int Size);
+	UFUNCTION(BlueprintCallable, Category = "ImGUI|Styles")
+	static void SetThemeCustom();
+	UFUNCTION(BlueprintCallable, Category = "ImGUI|Styles")
+	static void SetThemeRed();
+	UFUNCTION(BlueprintCallable, Category = "ImGUI|Styles")
+	void SetThemePurple();
 
 	// Window
 
